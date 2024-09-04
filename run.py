@@ -35,7 +35,6 @@ class CRDSetup:
         os.system("systemctl disable lightdm.service")
         print("Installed XFCE4 Desktop Environment!")
 
-
     def finish(self, user):
         os.system(f"adduser {user} chrome-remote-desktop")
         command = f"{CRD_SSH_Code} --pin={Pin}"
