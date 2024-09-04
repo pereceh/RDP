@@ -16,7 +16,6 @@ class CRDSetup:
         os.system("apt update")
         self.installCRD()
         self.installDesktopEnvironment()
-        self.installGoogleChrome()
         self.finish(user)
 
     @staticmethod
@@ -36,12 +35,6 @@ class CRDSetup:
         os.system("systemctl disable lightdm.service")
         print("Installed XFCE4 Desktop Environment!")
 
-    @staticmethod
-    def installGoogleChrome():
-        subprocess.run(["wget", "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"])
-        subprocess.run(["dpkg", "--install", "google-chrome-stable_current_amd64.deb"])
-        subprocess.run(['apt', 'install', '--assume-yes', '--fix-broken'])
-        print("Google Chrome Installed!")
 
     def finish(self, user):
         os.system(f"adduser {user} chrome-remote-desktop")
